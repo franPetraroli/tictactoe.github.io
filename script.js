@@ -3,17 +3,29 @@ const grid = document.querySelector("#grid");
 const boxes = document.querySelectorAll("div");
 const result = document.querySelector(".result");
 const aiBtn = document.querySelector("#ai");
+const playerBtn = document.querySelector("#player");
 
 //HARDCODED SYMBOL TO START
 let symbol = "X";
+let opponent = null;
 
-aiBtn.addEventListener("click", resetGrid);
+aiBtn.addEventListener("click", playAi);
+playerBtn.addEventListener("click", playHuman);
+
 //Assign event listener to boxes
-function newGame() {
-  grid.addEventListener("click", main);
+function newGame(player) {
+  if (player === "human") {
+    opponent = "human";
+    grid.removeEventListener("click", mainAi);
+    grid.addEventListener("click", mainHuman);
+  } else if (player === "ai") {
+    opponent = "ai";
+    grid.removeEventListener("click", mainHuman);
+    grid.addEventListener("click", mainAi);
+  }
 }
 
-function main() {
+function mainAi() {
   if (event.target.className === "box" && event.target.textContent === "") {
     event.target.textContent = symbol;
     game();
@@ -23,7 +35,23 @@ function main() {
     }
   }
 }
+function mainHuman() {
+  symbol = symbol === "X" ? "O" : "X";
+  if (event.target.className === "box" && event.target.textContent === "") {
+    event.target.textContent = symbol;
+  }
+  game();
+}
 
+function playAi() {
+  resetGrid();
+  newGame("ai");
+}
+
+function playHuman() {
+  resetGrid();
+  newGame("human");
+}
 //Game Logic
 function game() {
   //Check every rows
@@ -68,16 +96,30 @@ function game() {
 }
 
 function winOrLose(symbol) {
-  if (symbol === "O") {
-    result.textContent = "You Lost";
-    console.log("you lost");
-    //Remove event listner and prevent ai
-    grid.removeEventListener("click", main);
-  } else {
-    result.textContent = "You are the winner";
-    console.log("you win");
-    //prevent ai to move
-    grid.removeEventListener("click", main);
+  if (opponent === "ai") {
+    console.log(opponent);
+
+    if (symbol === "O") {
+      result.textContent = "You Lost";
+      //Remove event listner and prevent ai
+      grid.removeEventListener("click", mainAi);
+    } else {
+      result.textContent = "You are the winner";
+      //prevent ai to move
+      grid.removeEventListener("click", mainAi);
+    }
+  } else if (opponent === "human") {
+    console.log(opponent);
+
+    if (symbol === "O") {
+      result.textContent = "Player --- O --- won the game";
+      //Remove event listner and prevent ai
+      grid.removeEventListener("click", mainHuman);
+    } else {
+      result.textContent = "Player --- X --- won the game";
+      //prevent ai to move
+      grid.removeEventListener("click", mainHuman);
+    }
   }
 }
 
@@ -85,11 +127,8 @@ function resetGrid() {
   boxes.forEach(box => {
     box.textContent = "";
     result.textContent = "";
-    newGame();
   });
 }
-
-newGame();
 
 function aiRandomCell() {
   let empty = [];
