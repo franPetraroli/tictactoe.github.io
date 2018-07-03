@@ -24,8 +24,6 @@ function main() {
   }
 }
 
-// ai()
-
 //Game Logic
 function game() {
   //Check every rows
@@ -93,27 +91,6 @@ function resetGrid() {
 
 newGame();
 
-// function ai() {
-//   let aiSymbol = symbol === "X" ? "O" : "X";
-//   //Check for all the empty boxes
-//   let empty = [];
-//   boxes.forEach(box => {
-//     if (box.textContent === "") {
-//       //box is empty push to array
-//       empty.push(box);
-//     }
-//   });
-//   if (empty.length === 0) {
-//     return;
-//   }
-
-//   let random = Math.floor(Math.random() * empty.length);
-//   empty[random].textContent = aiSymbol;
-
-//   //Check if you have 2 adiacent cell if yes protect that cell
-//   //if not check if ai has 2 adiacent cell if yes block that cell and win
-//   //if not place randomly
-// }
 function aiRandomCell() {
   let empty = [];
   let result;
@@ -131,24 +108,6 @@ function checkForGridFull() {
   if (empty.length === 0) {
     return true;
   }
-}
-
-function checkForDefense() {
-  //Check every rows for 2 player symbol
-  checkRows();
-  //Check for every columns for 2 player symbol
-  checkCols();
-  //Check diagonal for 2 player symbol
-  checkDiag();
-}
-
-function checkForAttack() {
-  //Check every rows for 2 player symbol
-  checkRows();
-  //Check for every columns for 2 player symbol
-  checkCols();
-  //Check diagonal for 2 player symbol
-  checkDiag();
 }
 
 function checkRows(ps) {
