@@ -3,10 +3,15 @@ const grid = document.querySelector("#grid");
 const boxes = document.querySelectorAll("div");
 const result = document.querySelector(".result");
 const aiBtn = document.querySelector("#ai");
-const playerBtn = document.querySelector("#player");
+const playerBtn = document.querySelector("#human");
+const player1 = document.querySelector("#player1");
+const player2 = document.querySelector("#player2");
+// const test = document.querySelector("#test");
 
 //HARDCODED SYMBOL TO START
-let symbol = "X";
+let symbol1 = '';
+let symbol2 = '';
+let symbol = 'X'
 let opponent = null;
 
 aiBtn.addEventListener("click", playAi);
@@ -120,3 +125,9 @@ function checkForGridFull() {
     return true;
   }
 }
+
+
+// test.addEventListener('click', () => {
+//   console.log(player1.value);
+
+// })
