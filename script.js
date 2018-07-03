@@ -24,24 +24,6 @@ function newGame(player) {
     grid.addEventListener("click", mainAi);
   }
 }
-
-function mainHuman() {
-  symbol = symbol === "X" ? "O" : "X";
-  if (event.target.className === "box" && event.target.textContent === "") {
-    event.target.textContent = symbol;
-  }
-  game();
-}
-
-function playAi() {
-  resetGrid();
-  newGame("ai");
-}
-
-function playHuman() {
-  resetGrid();
-  newGame("human");
-}
 //Game Logic
 function game() {
   //Check every rows

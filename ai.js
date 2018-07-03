@@ -97,6 +97,11 @@ function checkDiag(ps) {
   }
 }
 
+function playAi() {
+  resetGrid();
+  newGame("ai");
+}
+
 function ai() {
   let aiSymbol = symbol === "X" ? "O" : "X";
   let result;
