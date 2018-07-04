@@ -42,7 +42,8 @@ section {
 }
 
 header {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   justify-content: center;
-  height: 30px;
+  grid-gap: 30px;
 }

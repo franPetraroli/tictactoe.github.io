@@ -116,21 +116,24 @@ function ai() {
   if (empty.length === 0) {
     return;
   }
-  if (checkRows("X")) {
-    result = checkRows("X");
+  // if (aiDefenseAttack(aiSymbol !== null)) {
+  //   result = aiDefenseAttack(aiSymbol)
+  //   boxes[result].textContent = aiSymbol;
+  // } else 
+  if (aiDefenseAttack('O') !== null) {
+    console.log('attack');
+    result = aiDefenseAttack('O')
     boxes[result].textContent = aiSymbol;
-  } else if (checkCols("X")) {
-    result = checkCols("X");
-    boxes[result].textContent = aiSymbol;
-    // console.log(checkCols("X"));
-  } else if (checkDiag("X")) {
-    result = checkDiag("X");
+  } else if (aiDefenseAttack(symbol) !== null) {
+    console.log('defense');
 
+    result = aiDefenseAttack(symbol)
     boxes[result].textContent = aiSymbol;
   } else {
     result = Math.floor(Math.random() * empty.length);
     empty[result].textContent = aiSymbol;
   }
+  game();
 }
 
 function mainAi() {
@@ -139,7 +142,18 @@ function mainAi() {
     game();
     if (result.textContent === "") {
       setTimeout(ai, 200);
-      game();
     }
+  }
+}
+
+function aiDefenseAttack(symb) {
+  if (checkRows(symb)) {
+    return checkRows(symb);
+  } else if (checkCols(symb)) {
+    return checkCols(symb);
+  } else if (checkDiag(symb)) {
+    return checkDiag(symb);
+  } else {
+    return null;
   }
 }

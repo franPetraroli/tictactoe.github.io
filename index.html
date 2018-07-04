@@ -14,24 +14,27 @@
   <header>
     <button id="ai">Play against Ai</button>
     <button id="human">play against human</button>
-
-    <h4>Player1</h4>
-    <select id="player1">
-      <option value="X">X</option>
-      <option value="O">O</option>
-      <option value="♥️">♥️</option>
-      <option value="♠️">♠️</option>
-    </select>
-    <h4>Player2</h4>
-    <select id="player2">
-      <option value="X">X</option>
-      <option value="O">O</option>
-      <option value="♥️">♥️</option>
-      <option value="♠️">♠️</option>
-    </select>
-
+    <section>
+      <h4>Player1</h4>
+      <select id="player1">
+        <option value="X">X</option>
+        <option value="O">O</option>
+        <option value="♥️">♥️</option>
+        <option value="♠️">♠️</option>
+      </select>
+    </section>
+    <section>
+      <h4>Player2</h4>
+      <select id="player2">
+        <option value="O">O</option>
+        <option value="W">W</option>
+        <option value="♥️">♥️</option>
+        <option value="♠️">♠️</option>
+      </select>
+    </section>
     <!-- <button id="test">Test</button> -->
   </header>
+  <h1 class="result"></h1>
   <main id="grid">
     <div class="box"></div>
     <div class="box"></div>
@@ -43,7 +46,6 @@
     <div class="box"></div>
     <div class="box"></div>
   </main>
-  <h1 class="result"></h1>
   <script src="ai.js"></script>
   <script src="human.js"></script>
   <script src="script.js"></script>
