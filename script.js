@@ -9,8 +9,6 @@ const player2 = document.querySelector("#player2");
 // const test = document.querySelector("#test");
 
 //HARDCODED SYMBOL TO START
-let symbol1 = '';
-let symbol2 = '';
 let symbol = 'X'
 let opponent = null;
 
@@ -76,7 +74,7 @@ function winOrLose(symbol) {
   if (opponent === "ai") {
     console.log(opponent);
 
-    if (symbol === "O") {
+    if (symbol === player2.value) {
       result.textContent = "You Lost";
       //Remove event listner and prevent ai
       grid.removeEventListener("click", mainAi);
@@ -88,12 +86,12 @@ function winOrLose(symbol) {
   } else if (opponent === "human") {
     console.log(opponent);
 
-    if (symbol === "O") {
-      result.textContent = "Player --- O --- won the game";
+    if (symbol === player2.value) {
+      result.textContent = `Player --- ${player2.value} --- won the game`;
       //Remove event listner and prevent ai
       grid.removeEventListener("click", mainHuman);
     } else {
-      result.textContent = "Player --- X --- won the game";
+      result.textContent = `Player --- ${player1.value}  --- won the game`;
       //prevent ai to move
       grid.removeEventListener("click", mainHuman);
     }

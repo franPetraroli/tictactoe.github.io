@@ -21,6 +21,7 @@ function checkRows(ps) {
       boxes[i].textContent === ""
     ) {
       // console.log(i);
+      debugger
       return i;
     }
   }
@@ -49,6 +50,7 @@ function checkCols(ps) {
       boxes[i].textContent === ""
     ) {
       // console.log(i);
+      debugger
       return i;
     }
   }
@@ -72,6 +74,7 @@ function checkDiag(ps) {
     boxes[4].textContent === ps &&
     boxes[8].textContent === ps
   ) {
+    debugger
     return 0;
   }
 
@@ -98,12 +101,13 @@ function checkDiag(ps) {
 }
 
 function playAi() {
+  symbol = player1.value
   resetGrid();
   newGame("ai");
 }
 
 function ai() {
-  let aiSymbol = symbol === "X" ? "O" : "X";
+  let aiSymbol = player2.value //symbol === "X" ? "O" : "X";
   let result;
   //Check for all the empty boxes
   let empty = [];
@@ -116,13 +120,10 @@ function ai() {
   if (empty.length === 0) {
     return;
   }
-  // if (aiDefenseAttack(aiSymbol !== null)) {
-  //   result = aiDefenseAttack(aiSymbol)
-  //   boxes[result].textContent = aiSymbol;
-  // } else 
-  if (aiDefenseAttack('O') !== null) {
+
+  if (aiDefenseAttack(aiSymbol) !== null) {
     console.log('attack');
-    result = aiDefenseAttack('O')
+    result = aiDefenseAttack(aiSymbol)
     boxes[result].textContent = aiSymbol;
   } else if (aiDefenseAttack(symbol) !== null) {
     console.log('defense');
@@ -141,17 +142,17 @@ function mainAi() {
     event.target.textContent = symbol;
     game();
     if (result.textContent === "") {
-      setTimeout(ai, 200);
+      setTimeout(ai, 500);
     }
   }
 }
 
 function aiDefenseAttack(symb) {
-  if (checkRows(symb)) {
+  if (Number.isInteger(checkRows(symb))) {
     return checkRows(symb);
-  } else if (checkCols(symb)) {
+  } else if (Number.isInteger(checkCols(symb))) {
     return checkCols(symb);
-  } else if (checkDiag(symb)) {
+  } else if (Number.isInteger(checkDiag(symb))) {
     return checkDiag(symb);
   } else {
     return null;
