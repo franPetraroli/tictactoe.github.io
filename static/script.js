@@ -123,9 +123,3 @@ function checkForGridFull() {
     return true;
   }
 }
-
-
-// test.addEventListener('click', () => {
-//   console.log(player1.value);
-
-// })

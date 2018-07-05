@@ -1,3 +1,4 @@
+//Check rows for possible winning combination
 function checkRows(ps) {
   let rows = [0, 3, 6];
   for (let i of rows) {
@@ -23,7 +24,7 @@ function checkRows(ps) {
     }
   }
 }
-
+//Check cols for possible winning combination
 function checkCols(ps) {
   let cols = [0, 1, 2];
   for (let i of cols) {
@@ -49,7 +50,7 @@ function checkCols(ps) {
     }
   }
 }
-
+//Check diagonals for possible winning combination
 function checkDiag(ps) {
   if (
     boxes[0].textContent === ps &&
@@ -93,13 +94,13 @@ function checkDiag(ps) {
     return diag2;
   }
 }
-
+//Ai init function
 function playAi() {
   symbol = player1.value
   resetGrid();
   newGame("ai");
 }
-
+//Ai Logic function
 function ai() {
   let aiSymbol = player2.value
   let result;
@@ -130,7 +131,7 @@ function ai() {
   }
   game();
 }
-
+//Ai logic
 function mainAi() {
   if (event.target.className === "box" && event.target.textContent === "") {
     event.target.textContent = symbol;
@@ -140,7 +141,7 @@ function mainAi() {
     }
   }
 }
-
+//Check Defense/Attack condition
 function aiDefenseAttack(symb) {
   if (Number.isInteger(checkRows(symb))) {
     return checkRows(symb);

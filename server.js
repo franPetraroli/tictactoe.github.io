@@ -3,9 +3,9 @@ const app = express();
 const http = require("http").Server(app);
 const io = require("socket.io")(http);
 const path = require("path");
-
-let port = process.env.PORT || 8080;
 const maxConnection = 2;
+
+const port = process.env.PORT || 8080;
 
 app.get("/", function (req, res) {
   res.sendFile(__dirname + "/index.html");
