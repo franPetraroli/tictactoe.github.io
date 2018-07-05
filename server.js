@@ -4,7 +4,7 @@ const http = require("http").Server(app);
 const io = require("socket.io")(http);
 const path = require("path");
 
-let port = 8080;
+let port = process.env.PORT || 8080;
 const maxConnection = 2;
 
 app.get("/", function (req, res) {
