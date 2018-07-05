@@ -18,7 +18,7 @@ body {
   height: 330px;
 }
 
-main div {
+div {
   width: 100px;
   height: 100px;
   background-color: #000;
@@ -53,4 +53,7 @@ header {
   margin: 0 auto;
 }
 
-button {}
+button {
+  padding: 20px 0;
+  background-color: aliceblue;
+}
