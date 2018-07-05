@@ -104,7 +104,6 @@ function resetGrid() {
     result.textContent = "";
   });
 }
-
 function aiRandomCell() {
   let empty = [];
   let result;

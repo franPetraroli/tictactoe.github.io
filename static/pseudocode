@@ -1,0 +1,26 @@
+import box-container, boxes, result div, start button
+
+add event listener to start button
+add event listener to the boxes
+
+function logic game
+  -select the first cell in every row and check if the other
+  cell in the same row are filled with same symbol, if yes return true
+
+  -select the first cell in every column and check if the other
+  cell in the same column are filled with same symbol, if yes return true
+
+  -select the first cell in every diagonal and check if the other
+  cell in the same diagonal are filled with same symbol, if yes return true
+
+function main
+  get the box clicked and check it is empty
+  fill the cell with the player symbol
+  check if win with game logic
+  let the other player play
+  check if win with game logic
+
+function ai
+  get all the empty cells
+  if there are no empty cell reset the game
+  place the opposite symbol from player in a random empty cells
