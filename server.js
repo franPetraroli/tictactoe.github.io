@@ -103,17 +103,7 @@ io.on("connection", function (socket) {
 
   socket.on("disconnect", function () {
     console.log("user disconnected");
-    board = [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-    ]
+    board = new Array(9)
     room = []
   });
 });
