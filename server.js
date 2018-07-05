@@ -30,13 +30,12 @@ let player = {};
 io.on("connection", function (socket) {
   console.log("a user connected");
 
-  if (room.length === 2) {
+  if (room.length === maxConnection) {
     socket.emit("disconnect", "Max 2 players allowed, try again later");
     socket.disconnect();
   }
 
   socket.on("join", data => {
-    // debugger
     player = {
       username: data.username
     };
@@ -61,10 +60,6 @@ io.on("connection", function (socket) {
           message: "Only 2 users are allowed to play at one time, try again later"
         });
       }
-      //remove the opponent form the availablePlayer array
-      //and set it against
-      // console.log('should have 2', room);
-      // socket.emit('update', player.hasOpponent)
     } else {
       //if first push to available players array
       //set hasOpponent to false
