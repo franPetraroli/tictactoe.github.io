@@ -15,7 +15,11 @@ let opponent = null;
 aiBtn.addEventListener("click", playAi);
 playerBtn.addEventListener("click", playHuman);
 
-//Assign event listener to boxes
+/**
+ * Assign event listener to boxes
+ * @param {player}
+ * @return void
+ */
 function newGame(player) {
   if (player === "human") {
     opponent = "human";
@@ -27,7 +31,10 @@ function newGame(player) {
     grid.addEventListener("click", mainAi);
   }
 }
-//Game Logic
+/**
+ * Game Logic, check for winning combination
+ * @return void
+ */
 function game() {
   //Check every rows
   let rows = [0, 3, 6];
@@ -70,6 +77,11 @@ function game() {
   }
 }
 
+/**
+ * WinLose function wrapper
+ * @param {symbol}
+ * @return void
+ */
 function winOrLose(symbol) {
   if (opponent === "ai") {
     console.log(opponent);
@@ -98,6 +110,10 @@ function winOrLose(symbol) {
   }
 }
 
+/**
+ * Reset Grid
+ * @return void
+ */
 function resetGrid() {
   boxes.forEach(box => {
     box.textContent = "";
@@ -105,6 +121,10 @@ function resetGrid() {
   });
 }
 
+/**
+ * Ai place move on random cell
+ * @return random index within empty boxes
+ */
 function aiRandomCell() {
   let empty = [];
   let result;
@@ -117,6 +137,11 @@ function aiRandomCell() {
   return (result = Math.floor(Math.random() * empty.length));
 }
 
+
+/**
+ * Check if grid is full game end
+ * @return true/false
+ */
 function checkForGridFull() {
   let empty = [];
   if (empty.length === 0) {

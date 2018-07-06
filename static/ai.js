@@ -1,4 +1,7 @@
-//Check rows for possible winning combination
+/**
+ * @param {symbol}
+ * @return the index to fill if any
+ */
 function checkRows(ps) {
   let rows = [0, 3, 6];
   for (let i of rows) {
@@ -24,7 +27,10 @@ function checkRows(ps) {
     }
   }
 }
-//Check cols for possible winning combination
+/**
+ * @param {symbol}
+ * @return the index to fill if any
+ */
 function checkCols(ps) {
   let cols = [0, 1, 2];
   for (let i of cols) {
@@ -50,7 +56,10 @@ function checkCols(ps) {
     }
   }
 }
-//Check diagonals for possible winning combination
+/**
+ * @param {symbol}
+ * @return the index to fill if any
+ */
 function checkDiag(ps) {
   if (
     boxes[0].textContent === ps &&
@@ -141,7 +150,10 @@ function mainAi() {
     }
   }
 }
-//Check Defense/Attack condition
+/**
+ * @param {symbol}
+ * @return the index to fill or null if no action required
+ */
 function aiDefenseAttack(symb) {
   if (Number.isInteger(checkRows(symb))) {
     return checkRows(symb);
